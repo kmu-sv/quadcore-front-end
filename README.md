@@ -1,0 +1,1 @@
+# Quadcore Aggregator Frontend
