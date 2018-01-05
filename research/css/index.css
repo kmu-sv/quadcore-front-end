@@ -3,20 +3,20 @@ body {
     padding-bottom: 1.5rem;
   }
   
-  .header,
-  .footer {
+  .header-content-wrapper
+  .footer-content-wrapper {
     padding-right: 1rem;
     padding-left: 1rem;
   }
   
 
-  .header {
+  .header-content-wrapper {
     padding-bottom: 1rem;
     border-bottom: .05rem solid #e5e5e5;
   }
 
   /* Custom page footer */
-  .footer {
+  .footer-content-wrapper {
     padding-top: 1.5rem;
     color: #777;
     border-top: .05rem solid #e5e5e5;
@@ -24,7 +24,7 @@ body {
   
   /* Customize container */
   @media (min-width: 48em) {
-    .container {
+    .container-content-wrapper {
       max-width: 46rem;
     }
   }
@@ -32,19 +32,19 @@ body {
     margin: 2rem 0;
   }
   
-  .card {
+  .article-card {
     text-align: center;
     border-bottom: .05rem solid #e5e5e5;
   }
 
   @media screen and (min-width: 48em) {
-    .header,
-    .footer {
+    .header-content-wrapper,
+    .footer-content-wrapper {
       padding-right: 0;
       padding-left: 0;
     }
   
-    .header {
+    .header-content-wrapper {
       margin-bottom: 2rem;
     }
   }
@@ -55,7 +55,7 @@ body {
   background-color: #fff;
 }
 
-.card img {
+.article-card img {
 	float: middle;
 	width: 100%;
 	height: auto;
