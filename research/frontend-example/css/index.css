@@ -1,0 +1,72 @@
+html, body {
+  width: 100%;
+  margin: 0 auto;
+  background-color: #f7f7f7;
+  color: black;
+}
+
+nav {
+  height: 80px;
+  background-color: white;
+}
+
+.qc-navbar-wrapper {
+  height: 80px;
+}
+
+.qc-brand-logo {
+
+}
+
+.qc-logo-icon {
+  width: auto;
+  height: 40px;
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+.qc-logo-text {
+  color: black;
+  vertical-align: middle;
+}
+
+.qc-nav-right > li > a {
+  height: 80px;
+  color: black;
+}
+
+.qc-member-logo {
+  margin-right: 5px;
+  font-size: 30px;
+}
+
+.qc-modal-interest {
+  float: left;
+}
+
+#feed {
+  padding-top: 30px;
+}
+
+.qc-article-card {
+  margin-bottom: 30px;
+}
+
+.qc-article-image {
+  height: 400px;
+}
+
+.qc-article-meta,
+.qc-article-brief {
+  color: #666666;
+}
+
+.qc-nearby-wrapper {
+  margin-bottom: 10px;
+}
+
+@media screen and (max-width: 600px) {
+  .qc-member-name {
+    display: none;
+  }
+}
