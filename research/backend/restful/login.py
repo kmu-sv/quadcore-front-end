@@ -36,6 +36,5 @@ class Login(Resource):
                 "cause": "Id or password is invalid!"
              })
             invalid_response.status_code = 401
-            return invalid_response
 
-    
+            return invalid_response
