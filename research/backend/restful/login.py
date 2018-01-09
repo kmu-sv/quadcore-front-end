@@ -29,7 +29,6 @@ class Login(Resource):
             return {
                 "result": 0
             }
-
         else:
             invalid_response = jsonify({
                 "result": 1,
