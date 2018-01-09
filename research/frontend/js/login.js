@@ -10,15 +10,15 @@ $(document).ready(function () {
 
 function auth(userName, password) {
     $.ajax
-    ({
-        type: "POST",
-        //SEND TO MY SERVER URL
-        url: "eomserver",
-        dataType: 'json',
-        async: false,
-        data: '{"userName": "' + userName + '", "password" : "' + password + '"}',
-        success: function (response) {
-          alert(JSON.stringify(response));
-        }
-    })
+        ({
+            type: "POST",
+            //SEND TO MY SERVER URL
+            url: "eomserver",
+            dataType: 'json',
+            async: false,
+            data: '{"userName": "' + userName + '", "password" : "' + password + '"}',
+            success: function (response) {
+                alert(JSON.stringify(response));
+            }
+        })
 }

@@ -11,7 +11,7 @@
 
   <div id="app-2">
     <span v-bind:title="message">
-        내 위에 잠시 마우스를 올리면 동적으로 바인딩 된 title을 볼 수 있습니다!
+        Hover your mouse over me for a dynamically bound title!
     </span>
   </div>
 
@@ -25,7 +25,7 @@
 
   <div id="app-5">
     <p>{{message}}</p>
-    <button v-on:click="reverseMessage">메세지 뒤집기</button>
+    <button v-on:click="reverseMessage">reverse message</button>
   </div>
 
   <script>
@@ -39,14 +39,14 @@
     var app2 = new Vue({
         el: '#app-2',
         data: {
-            message: '이 페이지는 ' + new Date() + '에 로드 되었습니다'
+            message: 'This page ' + 'is uploaded at' + new Date() 
         }
     })
 
     var app4 = new Vue({
         el:'#app-4',
         data: {
-            todos: [ //배열의 데이터를 사용해 항목 목록을 표시하는데 사용할 수 있다.
+            todos: [ // show item list using data in array
                 {text: 'javaScript 배우기'},
                 {text: 'learn vue'}
 
