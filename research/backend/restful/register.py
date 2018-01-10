@@ -34,7 +34,7 @@ class Register(Resource):
             raise ValueError('Your username is already being used.')
         else:
             # if not exist, insert in RedisDB
-            dbmanager.REDIS_DB.hmset( 'username:' + username, {
+            dbmanager.REDIS_DB.hmset('username:' + username, {
                 'password': hashed, 
                 'firstname': first_name,
                 'lastname': last_name
