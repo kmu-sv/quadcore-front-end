@@ -22,7 +22,7 @@ class Login(Resource):
         input_password = args['password'].encode("utf-8")
 
         # Load password from db
-        password_in_db = dbmanager.REDIS_DB.hget('username:' + str(input_username), 'password').decode("utf-8")
+        password_in_db = dbmanager.REDIS_DB.hget('username:' + str(input_username), 'password')
 
         # Check from input and db
         if bcrypt.checkpw(input_password, password_in_db.encode("utf-8")):
