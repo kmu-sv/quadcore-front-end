@@ -29,11 +29,15 @@ class Register(Resource):
         else:
             hashed = bcrypt.hashpw(password, bcrypt.gensalt())
 
-        # Insert in RedisDB
-        dbmanager.REDIS_DB.hmset( 'username:' + username, {
-            'password': hashed, 
-            'firstname': first_name,
-            'lastname': last_name
+        # Check if input username already exists in DB
+        if dbmanager.REDIS_DB.keys('username:' + username):
+            raise ValueError('Your username is already being used.')
+        else:
+            # if not exist, insert in RedisDB
+            dbmanager.REDIS_DB.hmset('username:' + username, {
+                'password': hashed, 
+                'firstname': first_name,
+                'lastname': last_name
             })
 
         # Complete Message
