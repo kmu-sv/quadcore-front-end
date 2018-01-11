@@ -5,7 +5,7 @@ body {
   background: #e9e9e9;
   color: #666;
   font-family: 'RobotoDraft', 'Roboto', sans-serif;
-  font-size: 20px;
+  font-size: 2.2vh;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   color: black;
@@ -57,7 +57,7 @@ nav {
 
 .qc-article-card {
   margin-bottom: 30px;
-  height: 700px;
+  
 }
 
 .qc-article-image {
@@ -67,6 +67,14 @@ nav {
 .qc-brand-logo {
   margin-left: 120px;
 }
+
+/*
+.qc-article-brief {
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap; 
+}
+*/
 
 #staggered-test li {
   opacity: 0;
@@ -79,6 +87,10 @@ nav {
 
   .qc-brand-logo {
     margin-left: 50px;
+  }
+
+  body {
+    font-size: auto;
   }
 }
 
