@@ -20,26 +20,6 @@ nav {
   height: 80px;
 }
 
-.qc-logo-icon {
-  width: auto;
-  height: 40px;
-  margin: 20px 0px;
-}
-
-.qc-logo-text {
-  color: black;
-  vertical-align: middle;
-}
-
-.qc-nav-right>li>a {
-  height: 80px;
-  color: black;
-}
-
-.qc-member-logo {
-  margin-right: 5px;
-  font-size: 30px;
-}
 
 #feed {
   padding-top: 30px;
@@ -76,21 +56,42 @@ nav {
 }
 */
 
+.qc-member-logo {
+  margin-right: 5px;
+  font-size: 30px;
+}
+
+.qc-nav-right>li>a {
+  height: 80px;
+  color: black;
+}
+
+.qc-logo-icon {
+  width: auto;
+  height: 40px;
+  margin: 20px 0px;
+}
+
+.qc-logo-text {
+  color: black;
+  vertical-align: middle;
+}
+
 #staggered-test li {
   opacity: 0;
 }
 
 @media screen and (max-width: 600px) {
+  body {
+    font-size: auto;
+  }
+  
   .qc-member-name {
     display: none;
   }
 
   .qc-brand-logo {
     margin-left: 50px;
-  }
-
-  body {
-    font-size: auto;
   }
 }
 
