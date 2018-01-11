@@ -48,6 +48,8 @@ nav {
 
 .feed-wrapper {
   display: flex;
+  display: -webkit-flex; /* Safari */
+  display: -ms-flexbox; /* IE */
   align-items: center;
   flex-direction: column; 
   justify-content: center;
@@ -63,7 +65,7 @@ nav {
 }
 
 .qc-brand-logo {
-  margin-left:120px;
+  margin-left: 120px;
 }
 
 #staggered-test li {
