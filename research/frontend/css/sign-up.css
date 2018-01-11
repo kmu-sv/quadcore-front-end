@@ -1,0 +1,30 @@
+html,
+body {
+    width: 100%;
+    margin: 0 auto;
+    background: #e9e9e9;
+    color: #666;
+    font-family: 'RobotoDraft', 'Roboto', sans-serif;
+    font-size: 14px;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+.container {
+    display: flex;
+    display: -webkit-flex; /* Safari */
+    display: -ms-flexbox; /* IE */
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.card-panel {
+    margin-top: 160px;
+}
+
+@media screen and (max-width: 600px) {
+    .card-panel {
+        margin: 70px auto;
+    }
+}

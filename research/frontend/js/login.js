@@ -1,7 +1,7 @@
 $(document).ready(function () {
-    $("#submit").click(function () {
+    $("#signin").click(function () {
         //collect userName and password entered by users
-        var userName = $("#username").val();
+        var username = $("#username").val();
         var password = $("#password").val();
 
         auth(userName, password);
@@ -9,16 +9,15 @@ $(document).ready(function () {
 });
 
 function auth(userName, password) {
-    $.ajax
-        ({
-            type: "POST",
-            //SEND TO MY SERVER URL
-            url: "eomserver",
-            dataType: 'json',
-            async: false,
-            data: '{"userName": "' + userName + '", "password" : "' + password + '"}',
-            success: function (response) {
-                alert(JSON.stringify(response));
-            }
-        })
+    $.ajax({
+        type: "POST",
+        //SEND TO MY SERVER URL
+        url: "http://54.151.58.22/",
+        dataType: 'json',
+        async: false,
+        data: '{"username": "' + username + '", "password" : "' + password + '"}',
+        success: function (response) {
+            alert(JSON.stringify(response));
+        }
+    })
 }
