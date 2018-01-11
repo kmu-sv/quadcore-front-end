@@ -3,12 +3,17 @@ body {
   width: 100%;
   margin: 0 auto;
   background: #e9e9e9;
-  color: #666666;
+  color: #666;
   font-family: 'RobotoDraft', 'Roboto', sans-serif;
   font-size: 20px;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   color: black;
+}
+
+h5 {
+  font-family: GillSans, Calibri, Trebuchet, sans-serif;
+  color: #6d4c41;
 }
 
 nav {
@@ -18,8 +23,7 @@ nav {
 .qc-logo-icon {
   width: auto;
   height: 40px;
-  margin-top: 20px;
-  margin-bottom: 20px;
+  margin: 20px 0px;
 }
 
 .qc-logo-text {
@@ -62,6 +66,10 @@ nav {
   margin-left:120px;
 }
 
+#staggered-test li {
+  opacity: 0;
+}
+
 @media screen and (max-width: 600px) {
   .qc-member-name {
     display: none;
@@ -70,16 +78,9 @@ nav {
   .qc-brand-logo {
     margin-left: 50px;
   }
-  
-
 }
 
-#staggered-test li {
-  opacity: 0;
-}
 
-h5 {
-  font-family: GillSans, Calibri, Trebuchet, sans-serif;
-  color: #6d4c41;
-}
+
+
 
