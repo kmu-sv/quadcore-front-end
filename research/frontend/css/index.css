@@ -8,18 +8,11 @@ body {
   font-size: 2.2vh;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  color: black;
-}
-
-h5 {
-  font-family: GillSans, Calibri, Trebuchet, sans-serif;
-  color: #6d4c41;
 }
 
 nav {
   height: 80px;
 }
-
 
 #feed {
   padding-top: 30px;
@@ -82,10 +75,6 @@ nav {
 }
 
 @media screen and (max-width: 600px) {
-  body {
-    font-size: auto;
-  }
-  
   .qc-member-name {
     display: none;
   }
