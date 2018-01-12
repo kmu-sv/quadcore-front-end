@@ -1,14 +1,14 @@
 $(document).ready(function () {
     $("#signin").click(function () {
-        //collect userName and password entered by users
+        //collect username and password entered by users
         var username = $("#username").val();
         var password = $("#password").val();
 
-        auth(userName, password);
+        auth(username, password);
     });
 });
 
-function auth(userName, password) {
+function auth(username, password) {
     $.ajax({
         type: "POST",
         //SEND TO MY SERVER URL
