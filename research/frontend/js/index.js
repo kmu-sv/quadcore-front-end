@@ -37,20 +37,42 @@ $(document).ready(function () {
     }
   });
 
+  var _throttleTimer = null;
+  var _throttleDelay = 100;
+  var $window = $(window);
+  var $document = $(document);
+
   var options = [{
-    selector: '#staggered-test',
-    offset: 300,
-    callback: function (el) {
-      Materialize.showStaggeredList($(el));
-    }
-  }, {
-    selector: '#image-test',
-    offset: 300,
-    callback: function (el) {
-      Materialize.fadeInImage($(el));
-    }
-  }];
+      selector: '#staggered-test',
+      offset: 500,
+      callback: function (el) {
+        Materialize.showStaggeredList($(el));
+      }
+    }, {
+      selector: '#image-test',
+      offset: 500,
+      callback: function (el) {
+        Materialize.fadeInImage($(el));
+      }
+    }];
 
   Materialize.scrollFire(options);
-});
 
+  $window
+          .off('scroll', ScrollHandler)
+          .on('scroll', ScrollHandler);
+
+  function ScrollHandler(e) {
+      clearTimeout(_throttleTimer);
+      _throttleTimer = setTimeout(function () {
+          console.log('scroll');
+
+
+          if ($window.scrollTop() + $window.height() > $document.height() - 100) {
+              alert("getting feed!");
+          }
+
+      }, _throttleDelay);
+
+    }
+  });
