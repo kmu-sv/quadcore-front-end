@@ -9,7 +9,7 @@ $(document).ready(function () {
     });
 });
 
-function auth(firstname, lastname, userName, password) {
+function auth(firstname, lastname, username, password) {
     $.ajax({
         type: "POST",
         //SEND TO MY SERVER URL

@@ -37,15 +37,16 @@ $(document).ready(function () {
     }
   });
 
-  var options = [{
+
+var options = [{
     selector: '#staggered-test',
-    offset: 300,
+    offset: 500,
     callback: function (el) {
       Materialize.showStaggeredList($(el));
     }
   }, {
     selector: '#image-test',
-    offset: 300,
+    offset: 500,
     callback: function (el) {
       Materialize.fadeInImage($(el));
     }
@@ -54,3 +55,12 @@ $(document).ready(function () {
   Materialize.scrollFire(options);
 });
 
+
+
+/*
+function IsScrollbarAtBottom() {
+  var documentHeight = $(document).height();
+  var scrollDifference = $(window).height() + $(window).scrollTop();
+  return (documentHeight == scrollDifference);
+}
+*/

@@ -12,7 +12,7 @@ function auth(userName, password) {
     $.ajax({
         type: "POST",
         //SEND TO MY SERVER URL
-        url: "http://54.151.58.22/",
+        url: "quadcore.news",
         dataType: 'json',
         async: false,
         data: '{"username": "' + username + '", "password" : "' + password + '"}',
