@@ -4,6 +4,7 @@ from flask_restful import Resource, Api
 from flask_restful import reqparse
 import json
 import bcrypt
+import re
 
 # url : '/register'
 # function : Sign-up with informations about username(e-mail), password, first name and last name.
@@ -32,6 +33,9 @@ class Register(Resource):
         # Check if input username already exists in DB
         if db.get_redis().keys('username:' + username):
             raise ValueError('Your username is already being used.')
+        elif re.match('^[_a-z0-9-]+(\.[_a-z0-9-]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,4})$', username) == None:
+	        print('Bad Syntax')
+	        raise ValueError('Check your e-mail format.')
         else:
             # if not exist, insert in RedisDB
             db.get_redis().hmset('username:' + username, {
