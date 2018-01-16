@@ -1,4 +1,4 @@
-from manager import dbmanager
+from manager.db import DBManager as db
 from flask import request, session, jsonify, json
 from flask_restful import Resource
 from .register import Register
@@ -22,7 +22,7 @@ class Login(Resource):
         input_password = args['password'].encode("utf-8")
 
         # Load password from db
-        password_in_db = dbmanager.REDIS_DB.hget('username:' + str(input_username), 'password')
+        password_in_db = db.get_redis().hget('username:' + str(input_username), 'password')
 
         # Check from input and db
         if bcrypt.checkpw(input_password, password_in_db.encode("utf-8")):

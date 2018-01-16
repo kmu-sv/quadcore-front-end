@@ -1,4 +1,4 @@
-from manager import dbmanager
+from manager.db import DBManager as db
 from flask import Flask, request, jsonify, json
 from flask_restful import Resource, Api
 from flask_restful import reqparse
@@ -30,11 +30,11 @@ class Register(Resource):
             hashed = bcrypt.hashpw(password, bcrypt.gensalt())
 
         # Check if input username already exists in DB
-        if dbmanager.REDIS_DB.keys('username:' + username):
+        if db.get_redis().keys('username:' + username):
             raise ValueError('Your username is already being used.')
         else:
             # if not exist, insert in RedisDB
-            dbmanager.REDIS_DB.hmset('username:' + username, {
+            db.get_redis().hmset('username:' + username, {
                 'password': hashed, 
                 'firstname': first_name,
                 'lastname': last_name
