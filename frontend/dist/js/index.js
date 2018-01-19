@@ -86,7 +86,7 @@ $(document).ready(function () {
   $("#linkedin").click(function (e) {
         $.ajax({
           type: "GET",
-          url: 'http://quadcore.news/login/github',
+          url: 'http://quadcore.news/login/linkedin',
         });
     });
   });
