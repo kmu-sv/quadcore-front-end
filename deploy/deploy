@@ -14,13 +14,14 @@ sudo mv quadcore-serving/backend quadcore.news/quadcore
 sudo cp maintenance/.env quadcore.news/quadcore/.env
 sudo rm -rf quadcore-serving
 
+sudo chmod 755 quadcore.news
+
 sudo apt-get install python3-dev python3-pip
 sudo pip3 install -r quadcore.news/quadcore/requirements.txt
 
 sudo systemctl daemon-reload
 sudo systemctl start nginx
 sudo systemctl start quadcore
-sudo chmod 755 quadcore.news
 
 exit
 DEPLOY
