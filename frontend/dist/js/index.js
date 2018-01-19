@@ -76,4 +76,17 @@ $(document).ready(function () {
 
       }, _throttleDelay);
     }
+  $("#github").click(function (e) {
+          $.ajax({
+            type: "GET",
+            url: 'http://quadcore.news/login/github',
+      });
+    });
+
+  $("#linkedin").click(function (e) {
+        $.ajax({
+          type: "GET",
+          url: 'http://quadcore.news/login/github',
+        });
+    });
   });

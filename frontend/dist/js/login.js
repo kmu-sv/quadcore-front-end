@@ -11,10 +11,14 @@ $(document).ready(function () {
 function auth(username, password) {
     $.ajax({
         type: "POST",
-        url: "quadcore.news",
+        url: "http://quadcore.news/register",
         dataType: 'json',
         async: false,
-        data: '{"username": "' + username + '", "password" : "' + password + '"}',
+// data: '{"username": "' + username + '", "password" : "' + password + '"}',
+        data: {
+            "username": username,
+            "password": password
+        },
         success: function (response) {
             alert(JSON.stringify(response));
         }
