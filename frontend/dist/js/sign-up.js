@@ -16,10 +16,14 @@ function auth(firstname, lastname, username, password) {
         url: "eomserver",
         dataType: 'json',
         async: false,
-        data: '{"firstname": "' + firstname + '", "lastname" : "' + lastname + '", "username" : "' + username + '", "password" : "' + password + '"}',
+        data: {
+            "firstname": firstname, 
+            "lastname" : lastname, 
+            "username" : username, 
+            "password" : password
+        },
         success: function (response) {
             alert(JSON.stringify(response));
         }
     })
 }
-

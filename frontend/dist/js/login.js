@@ -14,7 +14,6 @@ function auth(username, password) {
         url: "http://quadcore.news/register",
         dataType: 'json',
         async: false,
-// data: '{"username": "' + username + '", "password" : "' + password + '"}',
         data: {
             "username": username,
             "password": password
@@ -24,4 +23,3 @@ function auth(username, password) {
         }
     })
 }
-
