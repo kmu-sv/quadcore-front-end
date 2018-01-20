@@ -9,17 +9,21 @@ $(document).ready(function () {
     });
 });
 
-function auth(firstname, lastname, userName, password) {
+function auth(firstname, lastname, username, password) {
     $.ajax({
         type: "POST",
         //SEND TO MY SERVER URL
         url: "eomserver",
         dataType: 'json',
         async: false,
-        data: '{"firstname": "' + firstname + '", "lastname" : "' + lastname + '", "username" : "' + username + '", "password" : "' + password + '"}',
+        data: {
+            "firstname": firstname, 
+            "lastname" : lastname, 
+            "username" : username, 
+            "password" : password
+        },
         success: function (response) {
             alert(JSON.stringify(response));
         }
     })
 }
-

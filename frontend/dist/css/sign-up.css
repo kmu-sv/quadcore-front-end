@@ -10,7 +10,7 @@ body {
     -moz-osx-font-smoothing: grayscale;
 }
 
-.container {
+.card-container{
     display: flex;
     display: -webkit-flex; /* Safari */
     display: -ms-flexbox; /* IE */

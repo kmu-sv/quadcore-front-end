@@ -1,4 +1,6 @@
 $(document).ready(function () {
+
+  //Save and modify user's interest
   $(".modal").modal();
 
   $("#edit-interests").click(function (e) {
@@ -37,20 +39,65 @@ $(document).ready(function () {
     }
   });
 
+  // Real time feed
   var options = [{
     selector: '#staggered-test',
-    offset: 300,
+    offset: 500,
     callback: function (el) {
       Materialize.showStaggeredList($(el));
     }
   }, {
     selector: '#image-test',
-    offset: 300,
+    offset: 500,
     callback: function (el) {
       Materialize.fadeInImage($(el));
     }
   }];
 
   Materialize.scrollFire(options);
-});
 
+  // Detect sroll end
+  var _throttleTimer = null;
+  var _throttleDelay = 100;
+  var $window = $(window);
+  var $document = $(document);
+
+  $window
+    .off('scroll', ScrollHandler)
+    .on('scroll', ScrollHandler);
+
+  function ScrollHandler(e) {
+    clearTimeout(_throttleTimer);
+    _throttleTimer = setTimeout(function () {
+      console.log('scroll');
+      if ($window.scrollTop() + $window.height() > $document.height() - 100) {
+        alert("getting feed!");
+      }
+
+    }, _throttleDelay);
+  }
+
+  // Github login
+  $("#github").click(function (e) {
+    $.ajax({
+      type: "GET",
+      url: 'http://quadcore.news/login/github',
+    })
+    .done(function(){
+
+    })
+  });
+
+  // Linkedin login
+  $("#linkedin").click(function (e) {
+    $.ajax({
+      type: "GET",
+      url: 'http://quadcore.news/login/linkedin',
+    });
+  });
+
+  function openWin(url){  
+    window.open(url, "loginWithSocial", "width=800, height=700, toolbar=no, menubar=no, scrollbars=no, resizable=yes" );  
+} 
+
+});
