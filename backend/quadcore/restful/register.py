@@ -1,4 +1,4 @@
-from manager.db import DBManager as db
+from quadcore.manager.db import DBManager as db
 from flask import Flask, request, jsonify, json
 from flask_restful import Resource, Api
 from flask_restful import reqparse

@@ -1,7 +1,7 @@
-from manager.db import DBManager as db
+from quadcore.manager.db import DBManager as db
 from flask import request, session, jsonify, json
 from flask_restful import Resource
-from .register import Register
+from quadcore.restful.register import Register
 import bcrypt
 
 # url : '/login'
