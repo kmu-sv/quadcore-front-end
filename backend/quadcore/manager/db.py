@@ -1,4 +1,4 @@
-from config import Config
+from quadcore.config import Config
 import redis
 
 class DBManager:
