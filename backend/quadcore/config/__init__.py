@@ -18,3 +18,9 @@ class Config:
     github_redirect_url = "http://api.quadcore.news/login/github/authorized"
     github_next_url = "http://quadcore.news/profile"
     github_scope = ["read:user", "user:email", "repo:status", "read:org"]
+
+    linkedin_consumer_key = os.environ.get("LINKEDIN_CONSUMER_KEY")
+    linkedin_consumer_secret = os.environ.get("LINKEDIN_CONSUMER_SECRET")
+    linkedin_redirect_url = "http://api.quadcore.news/login/linkedin/authorized"
+    linkedin_next_url = "http://quadcore.news/profile"
+    linkedin_scope = ["read:user", "user:email", "repo:status", "read:org"]
