@@ -10,12 +10,16 @@ api = Api(bp_api)
 
 from quadcore.restful.github.login import GithubLogin
 from quadcore.restful.github.auth import GithubAuth
-from quadcore.restful.github.logout import GithubLogout
+from quadcore.restful.logout import Logout
 from quadcore.restful.profile import Profile
+from quadcore.restful.linkedin.login import LinkedInLogin
+from quadcore.restful.linkedin.auth import LinkedInAuth
 
 api.add_resource(GithubLogin, "/login/github")
 api.add_resource(GithubAuth, "/login/github/authorized")
-api.add_resource(GithubLogout, "/logout")
+api.add_resource(LinkedInLogin, "/login/linkedin")
+api.add_resource(LinkedInAuth, "/login/linkedin/authorized")
+api.add_resource(Logout, "/logout")
 api.add_resource(Profile, "/profile")
 
 app.register_blueprint(bp_api)
