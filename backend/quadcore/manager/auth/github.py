@@ -48,6 +48,8 @@ class GithubAuthManager:
             "state": state
         }, headers=req_header).json()
         
+        print(json.dumps(resp, indent=4))
+
         if "error" in resp:
             return None
         else:
