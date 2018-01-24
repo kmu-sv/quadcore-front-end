@@ -2,6 +2,7 @@ import requests
 import uuid
 from quadcore.config import Config
 from urllib.parse import urlencode
+import json
 
 class GithubAuthManager:
     """
