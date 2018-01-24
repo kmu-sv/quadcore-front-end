@@ -27,3 +27,6 @@ api.add_resource(Username, "/user/username")
 api.add_resource(Feed, "/feed")
 
 app.register_blueprint(bp_api)
+
+if __name__ == "__main__":
+    app.run(host="0.0.0.0")
