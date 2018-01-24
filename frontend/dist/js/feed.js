@@ -78,7 +78,7 @@ $(document).ready(function () {
 
     $.ajax({
       method: "GET",
-      url: "http://api.quadcore.news/feed?offset=" + offset
+      url: "http://quadcore.news/api/feed?offset=" + offset
     }).done(function (data) {
       data.articles.forEach(function (v, i, a) {
         $feed_wrapper.append(template_news.formatUnicorn(v));
@@ -126,13 +126,12 @@ $(document).ready(function () {
 
   $.ajax({
     method: "GET",
-    url: "http://api.quadcore.news/user/username"
+    url: "http://quadcore.news/api/user/username"
   }).done(function (data) {
     if (data.result == 0) {
       $("#username").html(data.username);
     } else {
-      $("#username").html("Tempoary User");
+      $("#username").html("Temporary User");
     }
-    
   });
 });

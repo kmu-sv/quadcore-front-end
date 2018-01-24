@@ -7,7 +7,7 @@ import os
 app = Flask(__name__)
 app.secret_key = os.urandom(24)
 
-bp_api = Blueprint("api", __name__)
+bp_api = Blueprint("api", __name__, url_prefix="/api")
 api = Api(bp_api)
 
 from quadcore.restful.github.login import GithubLogin
