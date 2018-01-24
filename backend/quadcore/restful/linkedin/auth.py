@@ -10,7 +10,9 @@ class LinkedInAuth(Resource):
             return redirect("http://quadcore.news/")
 
         session["linkedin_token"] = access_token
+        session["logged_in"] = True
         call_resp = lm.call("/v1/people/~?format=json", access_token)
         # TODO(@royeom) Set datas in redis
         session["username"] = call_resp["firstName"]
-        return call_resp
+        # For demo
+        return redirect("http://quadcore.news/feed.html")
