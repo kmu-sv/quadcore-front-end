@@ -10,7 +10,9 @@ class GithubAuth(Resource):
             return redirect("http://quadcore.news/")
 
         session["github_token"] = access_token
+        session["logged_in"] = True
         call_resp = gm.call("/user", access_token)
         # TODO(@harrydrippin) Set datas in redis
         session["username"] = call_resp["login"]
-        return call_resp
+        # For demo
+        return redirect("http://quadcore.news/feed.html")

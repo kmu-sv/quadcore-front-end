@@ -2,6 +2,7 @@ import requests
 import uuid
 from quadcore.config import Config
 from urllib.parse import urlencode
+import json
 
 class GithubAuthManager:
     """
@@ -48,6 +49,8 @@ class GithubAuthManager:
             "state": state
         }, headers=req_header).json()
         
+        print(json.dumps(resp, indent=4))
+
         if "error" in resp:
             return None
         else:

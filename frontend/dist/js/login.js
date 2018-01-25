@@ -1,21 +1,23 @@
 $(document).ready(function () {
     $("#signin").click(function () {
-        //collect userName and password entered by users
+        //collect username and password entered by users
         var username = $("#username").val();
         var password = $("#password").val();
 
-        auth(userName, password);
+        auth(username, password);
     });
 });
 
-function auth(userName, password) {
+function auth(username, password) {
     $.ajax({
         type: "POST",
-        //SEND TO MY SERVER URL
-        url: "http://54.151.58.22/",
+        url: "http://quadcore.news/register",
         dataType: 'json',
         async: false,
-        data: '{"username": "' + username + '", "password" : "' + password + '"}',
+        data: {
+            "username": username,
+            "password": password
+        },
         success: function (response) {
             alert(JSON.stringify(response));
         }
