@@ -1,18 +1,22 @@
-from flask import Flask, redirect, url_for, session, request, jsonify, abort
-from flask_restful import Resource, Api
-from quadcore.manager.auth.github import GithubAuthManager as gm
+from flask import Flask, redirect, session, request
+from flask_restful import Resource
+from quadcore.config import Config
+from quadcore.manager.platform.github import Github
+from quadcore.manager.data import DataManager
 
 class GithubAuth(Resource):
     def get(self):
-        code, state = request.args["code"], request.args["state"]
-        access_token = gm.get_access_token(code, state)
-        if access_token == None:
-            return redirect("http://quadcore.news/")
+        access_token = Github.access_token(request.args["code"], request.args["state"])
+        auth_info = Github.get_auth_info(access_token)
+        if auth_info != None:
+            session["username"] = auth_info["username"]
+            session["email"] = auth_info["email"]
+            session["github_token"] = access_token
 
-        session["github_token"] = access_token
-        session["logged_in"] = True
-        call_resp = gm.call("/user", access_token)
-        # TODO(@harrydrippin) Set datas in redis
-        session["username"] = call_resp["login"]
-        # For demo
-        return redirect("http://quadcore.news/feed.html")
+            if DataManager.is_exist_user(auth_info["email"]):
+                return redirect(Config.oauth_success_url)
+            else:
+                return redirect(Config.oauth_signup_url)
+        else:
+            return redirect(Config.oauth_failure_url)
+        

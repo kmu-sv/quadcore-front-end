@@ -1,18 +1,23 @@
-from flask import Flask, redirect, url_for, session, request, jsonify, abort
-from flask_restful import Resource, Api
-from quadcore.manager.auth.linkedin import LinkedInAuthManager as lm
+from flask import Flask, redirect, session, request
+from flask_restful import Resource
+from quadcore.config import Config
+from quadcore.manager.platform.linkedin import LinkedIn
+from quadcore.manager.data import DataManager
 
 class LinkedInAuth(Resource):
     def get(self):
-        code = request.args["code"]
-        access_token = lm.get_access_token(code)
-        if access_token == None:
-            return redirect("http://quadcore.news/")
+        access_token = LinkedIn.access_token(request.args["code"])
+        auth_info = LinkedIn.get_auth_info(access_token)
 
-        session["linkedin_token"] = access_token
-        session["logged_in"] = True
-        call_resp = lm.call("/v1/people/~?format=json", access_token)
-        # TODO(@royeom) Set datas in redis
-        session["username"] = call_resp["firstName"]
-        # For demo
-        return redirect("http://quadcore.news/feed.html")
+        if auth_info != None:
+            session["username"] = auth_info["username"]
+            session["email"] = auth_info["email"]
+            session["linkedin_token"] = access_token
+
+            if DataManager.is_exist_user(auth_info["email"]):
+                return redirect(Config.oauth_success_url)
+            else:
+                return redirect(Config.oauth_signup_url)
+        else:
+            return redirect(Config.oauth_failure_url)
+        
