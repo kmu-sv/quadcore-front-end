@@ -19,7 +19,7 @@ class Config:
     linkedin_consumer_key = os.environ.get("LINKEDIN_CONSUMER_KEY")
     linkedin_consumer_secret = os.environ.get("LINKEDIN_CONSUMER_SECRET")
     
-    oauth_success_url = "http://localhost:5000/feed"
-    oauth_signup_url = "http://localhost:5000/profile?signup=1"
-    oauth_failure_url = "http://localhost:5000?error=1"
+    oauth_success_url = "http://quadcore.news/feed.html"
+    oauth_signup_url = "http://quadcore.news/profile?signup=1"
+    oauth_failure_url = "http://quadcore.news?error=1"
     
