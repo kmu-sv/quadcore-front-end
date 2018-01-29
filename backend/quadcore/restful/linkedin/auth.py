@@ -1,5 +1,6 @@
 from flask import Flask, redirect, session, request
 from flask_restful import Resource
+from quadcore.config import Config
 from quadcore.manager.platform.linkedin import LinkedIn
 from quadcore.manager.data import DataManager
 

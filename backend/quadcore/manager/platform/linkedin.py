@@ -37,7 +37,7 @@ class LinkedIn(Platform):
             "grant_type": "authorization_code",
             "client_id": cls.client_id,
             "client_secret": cls.client_secret,
-            "redirect_uri": Config.linkedin_redirect_url,
+            "redirect_uri": cls.redirect_url,
             "code": auth_code
         }).json()
 
@@ -55,7 +55,7 @@ class LinkedIn(Platform):
     @classmethod
     def get_auth_info(cls, token):
         if token == None: return None
-        resp = cls.call("/people/~:(first-name,email-address)?format=json", access_token)
+        resp = cls.call("/people/~:(first-name,email-address)?format=json", token)
         return {
             "username": resp["firstName"],
             "email": resp["emailAddress"]
