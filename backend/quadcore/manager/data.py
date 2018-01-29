@@ -12,7 +12,7 @@ class DataManager:
         Get user profile from database.
         Return None if not exist.
         """
-        return db.hgetall("user:" + email)
+        return cls.db.hgetall("user:" + email)
 
     @classmethod
     def update_user_profile(cls, info):
@@ -21,7 +21,7 @@ class DataManager:
         """
         if info["username"] == None or info["email"] == None:
             return None
-        return db.hmset("user:" + info["email"], info)
+        return cls.db.hmset("user:" + info["email"], info)
     
     @classmethod
     def set_user_profile(cls, info):
@@ -30,11 +30,11 @@ class DataManager:
         """
         if info["username"] == None or info["email"] == None:
             return None
-        return db.hmset("user:" + info["email"], info)
+        return cls.db.hmset("user:" + info["email"], info)
 
     @classmethod
     def is_exist_user(cls, email):
         """
         Check this email is already exist in database.
         """
-        return db.keys("user:" + email)
+        return cls.db.keys("user:" + email)
