@@ -1,68 +1,62 @@
-import requests
-import uuid
 from quadcore.config import Config
+from quadcore.manager.platform import Platform
+
 from urllib.parse import urlencode
+import requests
 import json
 
-class LinkedInAuthManager:
+class LinkedIn(Platform):
     """
     Manage LinkedIn authentication process.
     """
-    # TODO(@royeom) Randomize state string by individual against CSRF attack
-    state = str(uuid.uuid4())
-    base_url = "https://api.linkedin.com/v1/"
-    auth_url = "https://www.linkedin.com/oauth/v2/authorization/?"
+    base_url = "https://api.linkedin.com/v1"
+    authenticate_url = "https://www.linkedin.com/oauth/v2/authorization/?"
+    redirect_url = "http://quadcore.news/api/login/linkedin/authorized"
     access_token_url = "https://www.linkedin.com/oauth/v2/accessToken"
     client_id = Config.linkedin_consumer_key
     client_secret = Config.linkedin_consumer_secret
-    response_type = "code"
+    scope = ["r_basicprofile", "r_emailaddress"]
 
     @classmethod
-    def identify_url_generate(cls, scope=["r_basicprofile", "r_emailaddress"]):
-        """
-        Generate Linkedin identification url.
-        """
+    def auth_url(cls, scope=scope, redirect=redirect_url):
         scope_string = str()
         for item in scope:
             scope_string += item + " "
 
-        return cls.auth_url + urlencode({
-            "response_type":cls.response_type,
+        return cls.authenticate_url + urlencode({
+            "response_type": "code",
             "client_id": cls.client_id,
-            "redirect_uri": Config.linkedin_redirect_url,
+            "redirect_uri": redirect,
             "state": cls.state,
             "scope": scope_string[:-1]
         })
 
     @classmethod
-    def get_access_token(cls, code):
-        """
-        Get access token from LinkedIn.
-        """
-
+    def access_token(cls, auth_code, state=str()):
         resp = requests.post(cls.access_token_url, data={
             "grant_type": "authorization_code",
             "client_id": cls.client_id,
             "client_secret": cls.client_secret,
             "redirect_uri": Config.linkedin_redirect_url,
-            "code": code
+            "code": auth_code
         }).json()
 
-        print(json.dumps(resp, indent=4))
-        
-        if "error" in resp:
-            return None
-        else:
-            return resp["access_token"]
+        return (None if "error" in resp else resp["access_token"])
 
     @classmethod
     def call(cls, endpoint, token):
-        """
-        Fetch JSON with access token from given endpoint.
-        """
         req_header = {
             "Authorization": "Bearer " + token
         }
 
         return requests.get(cls.base_url + endpoint, 
             headers=req_header).json()
+
+    @classmethod
+    def get_auth_info(cls, token):
+        if token == None: return None
+        resp = cls.call("/people/~:(first-name,email-address)?format=json", access_token)
+        return {
+            "username": resp["firstName"],
+            "email": resp["emailAddress"]
+        }

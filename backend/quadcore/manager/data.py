@@ -1,18 +1,40 @@
-from flask import session
 from quadcore.manager.db import DBManager
 
 class DataManager:
     """
-    Manage user data on database.
+    Manage user data.
     """
     db = DBManager.get_redis()
 
     @classmethod
-    def get_user_profile(cls, username):
+    def get_user_profile(cls, email):
         """
-        Fetch user profile based on username.
-        If not exist, return None.
-        TODO(@harrydrippin): Now not working
+        Get user profile from database.
+        Return None if not exist.
         """
-        user_key = "user:" + username
-        return db.hgetall(user_key)
+        return db.hgetall("user:" + email)
+
+    @classmethod
+    def update_user_profile(cls, info):
+        """
+        Update user profile to database.
+        """
+        if info["username"] == None or info["email"] == None:
+            return None
+        return db.hmset("user:" + info["email"], info)
+    
+    @classmethod
+    def set_user_profile(cls, info):
+        """
+        Save user profile to database.
+        """
+        if info["username"] == None or info["email"] == None:
+            return None
+        return db.hmset("user:" + info["email"], info)
+
+    @classmethod
+    def is_exist_user(cls, email):
+        """
+        Check this email is already exist in database.
+        """
+        return db.keys("user:" + email)

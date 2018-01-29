@@ -1,43 +1,37 @@
-import requests
-import uuid
 from quadcore.config import Config
+from quadcore.manager.platform import Platform
 from urllib.parse import urlencode
+from flask import session
+import requests
 import json
 
-class GithubAuthManager:
+class Github(Platform):
     """
     Manage Github authentication process.
     """
-    # TODO(@harrydrippin) Randomize state string by individual against CSRF attack
-    state = str(uuid.uuid4())
     base_url = "https://api.github.com"
-    auth_url = "https://github.com/login/oauth/authorize/?"
+    authenticate_url = "https://github.com/login/oauth/authorize/?"
+    redirect_url = "http://quadcore.news/api/login/github/authorized"
     access_token_url = "https://github.com/login/oauth/access_token"
     client_id = Config.github_consumer_key
     client_secret = Config.github_consumer_secret
+    scope = ["read:user", "user:email", "repo:status", "read:org"]
 
     @classmethod
-    def identify_url_generate(cls, redirect, scope=["read:user"], allow_signup=False):
-        """
-        Generate Github identification url.
-        """
+    def auth_url(cls, scope=scope, redirect=redirect_url):
         scope_string = str()
         for item in scope:
             scope_string += item + "%20"
 
-        return cls.auth_url + urlencode({
+        return cls.authenticate_url + urlencode({
             "client_id": cls.client_id,
             "redirect_uri": redirect,
             "scope": scope_string[:-3],
-            "state": cls.state,
-            "allow_signup": ("true" if allow_signup else "false")
+            "state": cls.state
         })
 
     @classmethod
-    def get_access_token(cls, code, state):
-        """
-        Get access token from Github.
-        """
+    def access_token(cls, code, state=str()):
         req_header = {
             "Accept": "application/json"
         }
@@ -45,25 +39,27 @@ class GithubAuthManager:
         resp = requests.post(cls.access_token_url, data={
             "client_id": cls.client_id,
             "client_secret": cls.client_secret,
-            "code": code,
+            "code": auth_code,
             "state": state
         }, headers=req_header).json()
         
-        print(json.dumps(resp, indent=4))
-
-        if "error" in resp:
-            return None
-        else:
-            return resp["access_token"]
+        return (None if "error" in resp else resp["access_token"])
 
     @classmethod
     def call(cls, endpoint, token):
-        """
-        Fetch JSON with access token from given endpoint.
-        """
         req_header = {
             "Authorization": "token " + token
         }
 
         return requests.get(cls.base_url + endpoint, 
             headers=req_header).json()
+
+    @classmethod
+    def get_auth_info(cls, token):
+        if token == None: return False
+        resp = cls.call("/user", token)
+        return {
+            "username": resp["login"],
+            "email": resp["email"]
+        }
+        
