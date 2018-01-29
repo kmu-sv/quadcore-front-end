@@ -11,7 +11,7 @@ class Github(Platform):
     """
     base_url = "https://api.github.com"
     authenticate_url = "https://github.com/login/oauth/authorize/?"
-    redirect_url = "http://localhost:5000/api/login/github/authorized"
+    redirect_url = "http://quadcore.news/api/login/github/authorized"
     access_token_url = "https://github.com/login/oauth/access_token"
     client_id = Config.github_consumer_key
     client_secret = Config.github_consumer_secret
