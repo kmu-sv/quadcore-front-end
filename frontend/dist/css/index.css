@@ -2,7 +2,6 @@ html,
 body {
   width: 100%;
   margin: 0 auto;
-  background: #e9e9e9;
   /*color: #666;*/
   font-family: 'RobotoDraft', 'Roboto', sans-serif;
   font-size: 14px;
@@ -14,8 +13,6 @@ body {
 .card-panel {
   margin: 50px auto;
 }
-
-
 
 #feed {
   padding-top: 30px;
@@ -39,6 +36,13 @@ nav {
   height: 80px;
 }
 
+.news-img {
+  margin-top: 1em;
+}
+
+.page-footer {
+  background-color: #bdbdbd;
+}
 
 .qc-article-card {
   margin-bottom: 30px;
@@ -74,9 +78,14 @@ nav {
   font-style: italic;
 }
 
+.sign-in-text {
+  font-size: 1.5em;
+  color: #9e9e9e;
+}
+
 .social-button {
   display: block;
-  margin: 15px;
+  margin: 0.5em;
   height: 64px;
   cursor: pointer;
 }
@@ -93,10 +102,9 @@ nav {
   margin-left: 16px;
 }
 
-
 .social-button-wrapper {
   border: 3px solid #e0e0e0;
-  margin: 0 80px;
+  margin: 0 0.5em;
 }
 
 #staggered-test li {
@@ -116,23 +124,9 @@ nav {
   .qc-sign-in-linkedin {
     display: none;
   }
+  .news-img {
+    display: none;
+  }
 }
 
 
-
-
-
-
-
-.sign-in-text {
-  font-size: 1.5em;
-  color: #9e9e9e;
-}
-
-.news-img {
-  margin-top: 20px;
-}
-
-.page-footer {
-  background-color: #bdbdbd;
-}
