@@ -15,7 +15,7 @@ class LinkedInAuth(Resource):
             session["linkedin_token"] = access_token
 
             username = DataManager.check_email_username(auth_info["email"])
-            if not username == None:
+            if username != None:
                 session["username"] = username
                 return redirect(Config.oauth_success_url)
             else:

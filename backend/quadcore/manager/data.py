@@ -35,7 +35,7 @@ class DataManager:
     @classmethod
     def check_email_username(cls, email):
         """
-        Check whether email and username are connected
+        Check whether email and username are connected.
         """
         return cls.db.hget('email:' + email, 'username')
         
