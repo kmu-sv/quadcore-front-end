@@ -59,7 +59,7 @@ class Github(Platform):
         if token == None: return False
         resp = cls.call("/user", token)
         return {
-            "username": resp["login"],
+            "temp_name": resp["login"],
             "email": resp["email"]
         }
         
