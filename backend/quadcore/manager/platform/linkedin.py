@@ -57,6 +57,6 @@ class LinkedIn(Platform):
         if token == None: return None
         resp = cls.call("/people/~:(first-name,email-address)?format=json", token)
         return {
-            "username": resp["firstName"],
+            "temp_name": resp["firstName"],
             "email": resp["emailAddress"]
         }

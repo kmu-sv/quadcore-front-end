@@ -33,8 +33,23 @@ class DataManager:
         return cls.db.hmset("user:" + info["email"], info)
 
     @classmethod
-    def is_exist_user(cls, email):
+    def check_email_username(cls, email):
         """
-        Check this email is already exist in database.
+        Check whether email and username are connected.
         """
-        return cls.db.keys("user:" + email)
+        return cls.db.hget('email:' + email, 'username')
+        
+    # Prepare for case
+    # @classmethod
+    # def is_exist_user(cls, email):
+    #     """
+    #     Check this email is already exist in database.
+    #     """
+    #     return cls.db.keys("user:" + email)
+
+    @classmethod
+    def get_user_interests(cls, email):
+        """
+        Access user:<email> and Fetch interests dict.
+        """
+        pass
