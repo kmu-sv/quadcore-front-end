@@ -81,7 +81,6 @@ $(document).ready(function () {
         })
     }
 
-    
 
     editProfile();
     saveProfile();
