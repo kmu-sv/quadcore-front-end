@@ -32,7 +32,7 @@ class DataManager:
             return None
         return cls.db.hmset("user:" + info["username"], {
             'email': info["email"],
-            'fristName': info["firstName"],
+            'firstName': info["firstName"],
             'lastName': info["lastName"]
         })
 
@@ -46,7 +46,7 @@ class DataManager:
     @classmethod
     def set_user_map(cls, info):
         """
-        Connect username and email
+        Connect username and email.
         """
         if info["username"] == None or info["email"] == None:
             return None
@@ -57,7 +57,7 @@ class DataManager:
     @classmethod
     def check_username(cls, username):
         """
-        Check username in Real-time
+        Check username in Real-time.
         """
         return cls.db.keys('user:' + username)
 
