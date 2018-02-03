@@ -1,6 +1,6 @@
 $(document).ready(function () {
-
-    //var common = new Common();
+    var common = new Common();
+    var info = common.fetchinfo();
     var checkUsername = 0;
     var info = {
         "firstname" : "SeungWoo",
@@ -16,9 +16,7 @@ $(document).ready(function () {
         $('#profile-username').attr('value', info.username);
         $('#username').text(info.username);
         $('#email').attr('value', info.email);
-
     }
-
     // Edit profile
     function editProfile() {
         var interest = info.interest.map(function (data) {
@@ -26,13 +24,11 @@ $(document).ready(function () {
                 tag: data
             }
         });
-
         $(".modal").modal();
         $("#edit-profile").click(function (e) {
             e.preventDefault();
             $("#modal-edit-profile").modal("open");
         });
-
         $('.chips').material_chip();
 
         $('.chips-initial').material_chip({ 
@@ -40,7 +36,6 @@ $(document).ready(function () {
         });
         return 
     }
-
     // Save modification of profile
     function saveProfile() {
         $("#save").click(function () {
@@ -64,8 +59,7 @@ $(document).ready(function () {
             }
         });
     }
-
-    //check user's name
+    // Check user's name
     function checkUsername() {
         $.ajax({
             type: 'POST',
@@ -80,8 +74,6 @@ $(document).ready(function () {
             }
         })
     }
-
-
     editProfile();
     saveProfile();
     setProfile();
