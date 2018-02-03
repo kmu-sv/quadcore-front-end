@@ -30,7 +30,11 @@ class DataManager:
         """
         if info["username"] == None or info["email"] == None:
             return None
-        return cls.db.hmset("user:" + info["email"], info)
+        return cls.db.hmset("user:" + info["username"], {
+            'email': info["email"],
+            'firstName': info["firstName"],
+            'lastName': info["lastName"]
+        })
 
     @classmethod
     def check_email_username(cls, email):
@@ -38,18 +42,28 @@ class DataManager:
         Check whether email and username are connected.
         """
         return cls.db.hget('email:' + email, 'username')
-        
-    # Prepare for case
-    # @classmethod
-    # def is_exist_user(cls, email):
-    #     """
-    #     Check this email is already exist in database.
-    #     """
-    #     return cls.db.keys("user:" + email)
 
     @classmethod
-    def get_user_interests(cls, email):
+    def set_user_map(cls, info):
         """
-        Access user:<email> and Fetch interests dict.
+        Connect username and email.
+        """
+        if info["username"] == None or info["email"] == None:
+            return None
+        return cls.db.hmset("email:" + info["email"], {
+            'username': info["username"] 
+        })
+    
+    @classmethod
+    def check_username(cls, username):
+        """
+        Check username in Real-time.
+        """
+        return cls.db.keys('user:' + username)
+
+    @classmethod
+    def get_user_interests(cls, username):
+        """
+        Access user:<username> and Fetch interests dict.
         """
         pass
