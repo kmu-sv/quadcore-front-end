@@ -1,16 +1,17 @@
 #!/bin/bash
 # Deploy Script for Frontend and Backend
-ssh -tt ubuntu@quadcore.news 'bash -s' << 'DEPLOY'
+ssh -tt ubuntu@quadcore.news BRANCH=$1 'bash -s' << 'DEPLOY'
+sudo systemctl daemon-reload
 sudo systemctl stop nginx
 sudo systemctl stop quadcore
 
 cd /var/www
 sudo rm -rf quadcore.news
 
-git clone https://github.com/kmu-sv/quadcore-serving.git
+sudo git clone https://github.com/kmu-sv/quadcore-serving.git -b $BRANCH
 sudo mv quadcore-serving/frontend quadcore.news
 sudo mv quadcore-serving/backend quadcore.news/quadcore
-sudo mv maintenance/.env quadcore.news/quadcore/.env
+sudo cp maintenance/.env quadcore.news/quadcore/.env
 sudo rm -rf quadcore-serving
 
 sudo chmod 755 quadcore.news
