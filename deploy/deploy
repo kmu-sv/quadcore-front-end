@@ -22,6 +22,5 @@ sudo pip3 install -r quadcore.news/quadcore/requirements.txt
 sudo systemctl daemon-reload
 sudo systemctl start nginx
 sudo systemctl start quadcore
-
 exit
 DEPLOY
