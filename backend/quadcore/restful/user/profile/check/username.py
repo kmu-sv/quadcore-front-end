@@ -9,7 +9,7 @@ class CheckUsername(Resource):
         if DataManager.check_username(username):
             return {
                 'result': 1
-                'error': "Username already existed."
+                'error': 'Username already existed.'
             }
         else:
             return {
