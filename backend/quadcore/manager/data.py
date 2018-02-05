@@ -21,7 +21,12 @@ class DataManager:
         """
         if info["username"] == None or info["email"] == None:
             return None
-        return cls.db.hmset("user:" + info["email"], info)
+        
+        # If new info is needed, just add below. 
+        return cls.db.hmset("user:" + info["username"], {
+            'firstName': info["firstName"],
+            'lastName': info["lastName"]
+        })
     
     @classmethod
     def set_user_profile(cls, info):
@@ -30,12 +35,14 @@ class DataManager:
         """
         if info["username"] == None or info["email"] == None:
             return None
+        
+        # If new info is needed, just add below. 
         return cls.db.hmset("user:" + info["username"], {
             'email': info["email"],
             'firstName': info["firstName"],
             'lastName': info["lastName"]
         })
-
+    
     @classmethod
     def check_email_username(cls, email):
         """

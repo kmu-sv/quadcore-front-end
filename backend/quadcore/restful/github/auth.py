@@ -9,7 +9,6 @@ class GithubAuth(Resource):
         access_token = Github.access_token(request.args["code"], request.args["state"])
         auth_info = Github.get_auth_info(access_token)
         if auth_info != None:
-            session["temp_name"] = auth_info["temp_name"]
             session["email"] = auth_info["email"]
             session["github_token"] = access_token
 
