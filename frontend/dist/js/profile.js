@@ -1,6 +1,5 @@
 $(document).ready(function () {
     var common = new Common();
-    var info = common.fetchinfo();
     var checkUsername = 0;
     var info = {
         "firstname" : "SeungWoo",
