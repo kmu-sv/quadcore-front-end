@@ -16,8 +16,6 @@ class GithubAuth(Resource):
                 session["username"] = username
                 return redirect(Config.oauth_success_url)
             else:
-                print("in auth")
-                print(session["github_token"])
                 return redirect(Config.oauth_signup_url)
         else:
             return redirect(Config.oauth_failure_url)

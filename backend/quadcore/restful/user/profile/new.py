@@ -8,8 +8,6 @@ class ProfileNew(Resource):
     def post(self):
         try:
             args = json.loads(request.data.decode("utf-8"))
-            print("in new")
-            print(session["github_token"])
             if "github_token" in session or "linkedin_token" in session:
                 if not DataManager.is_exist_user(session["email"]):
                     result = DataManager.set_user_profile(args)
