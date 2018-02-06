@@ -1,6 +1,7 @@
 from flask import Flask, session, request
 from flask_restful import Resource
 from quadcore.manager.data import DataManager
+import json
 
 class ProfileUpdate(Resource):
     def post(self):

@@ -1,5 +1,6 @@
 from flask import Flask, session, request
 from flask_restful import Resource
+import json
 from quadcore.manager.data import DataManager
 
 class ProfileNew(Resource):
