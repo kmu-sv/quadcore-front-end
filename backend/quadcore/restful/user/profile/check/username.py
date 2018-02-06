@@ -8,8 +8,8 @@ class CheckUsername(Resource):
         username = args["username"]
         if DataManager.check_username(username):
             return {
-                'result': 1
-                'error': "Username already existed."
+                'result': 1,
+                'error': 'Username already existed.'
             }
         else:
             return {
