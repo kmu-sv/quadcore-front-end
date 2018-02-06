@@ -1,12 +1,5 @@
 $(document).ready(function () {
     var common = new Common();
-    var info = {
-        "firstname": "SeungWoo",
-        "lastname": "Jeong",
-        "username": "swzoey",
-        "email": "tmddnnim2da@gmail.com",
-        "interest": ["c++", "c", "python"]
-    };
     // News template
     var offset = 10;
     var template_news = "" +
