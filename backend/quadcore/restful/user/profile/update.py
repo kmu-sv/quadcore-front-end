@@ -3,7 +3,7 @@ from flask_restful import Resource
 from quadcore.manager.data import DataManager
 
 class ProfileUpdate(Resource):
-    def get(self):
+    def post(self):
         args = json.loads(request.data.decode("utf-8"))
         if "github_token" in session or "linkedin_token" in session:
             result = DataManager.update_user_profile(args)

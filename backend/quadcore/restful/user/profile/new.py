@@ -3,7 +3,7 @@ from flask_restful import Resource
 from quadcore.manager.data import DataManager
 
 class ProfileNew(Resource):
-    def get(self):
+    def post(self):
         args = json.loads(request.data.decode("utf-8"))
         if "github_token" in session or "linkedin_token" in session:
             if not DataManager.is_exist_user(session["email"]):
