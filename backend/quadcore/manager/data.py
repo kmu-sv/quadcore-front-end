@@ -40,7 +40,8 @@ class DataManager:
         return cls.db.hmset("user:" + info["username"], {
             'email': info["email"],
             'firstName': info["firstName"],
-            'lastName': info["lastName"]
+            'lastName': info["lastName"],
+            'interests': "[]"
         })
     
     @classmethod
@@ -60,7 +61,13 @@ class DataManager:
         return cls.db.hmset("email:" + info["email"], {
             'username': info["username"] 
         })
-    
+    @classmethod
+    def is_exist_user(cls, email):
+        """
+        Check email key 
+        """
+        return cls.db.keys('email:' + email)
+
     @classmethod
     def check_username(cls, username):
         """
