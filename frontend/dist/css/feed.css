@@ -1,0 +1,88 @@
+.card-title {
+    font-weight: bold;
+}
+
+#feed {
+    padding-top: 30px;
+}
+
+.feed-wrapper {
+    break-inside: avoid;
+    page-break-inside: avoid;
+    -webkit-column-break-inside: avoid;
+}
+
+.feed-wrapper .card {
+    display: inline-block;
+    overflow: visible;
+}
+
+.grey-text {
+    font-weight: 900;
+}
+
+nav {
+    height: 80px;
+}
+
+.navbar-fixed {
+    height: 80px;
+}
+
+.preloader-wrapper {
+    margin: 0px auto;
+}
+
+.qc-article-brief {
+    text-overflow: ellipsis;
+}
+
+.qc-article-card {
+    margin-bottom: 30px;
+}
+
+.qc-member-logo {
+    font-size: 30px;
+}
+
+.qc-nav-right>li>a {
+    color: black;
+    height: 80px;
+}
+
+.qc-logo-icon {
+    height: 40px;
+    margin: 20px 0px;
+    width: auto;
+}
+
+.qc-logo-text {
+    color: black;
+    vertical-align: middle;
+}
+
+@media only screen and (max-width: 600px) {
+    .feed-wrapper {
+        column-count: 1;
+        -webkit-column-count: 1;
+        /* Chrome, Safari, Opera */
+        -moz-column-count: 1;
+        /* Firefox */
+    }
+}
+
+@media only screen and (min-width: 601px) {
+    .feed-wrapper {
+        column-count: 2;
+        -webkit-column-count: 2;
+        -moz-column-count: 2;
+    }
+}
+
+@media only screen and (min-width: 993px) {
+    .feed-wrapper {
+        column-count: 3;
+        -webkit-column-count: 3;
+        -moz-column-count: 3;
+    }
+}

@@ -1,6 +1,9 @@
 #!/bin/bash
 # Deploy Script for Frontend and Backend
-ssh -tt ubuntu@quadcore.news BRANCH=$1 'bash -s' << 'DEPLOY'
+cd ../..
+zip -r upload.zip quadcore-serving
+scp upload.zip ubuntu@quadcore.news:/home/ubuntu
+ssh -tt ubuntu@quadcore.news 'bash -s' << 'DEPLOY'
 sudo systemctl daemon-reload
 sudo systemctl stop nginx
 sudo systemctl stop quadcore
@@ -8,11 +11,12 @@ sudo systemctl stop quadcore
 cd /var/www
 sudo rm -rf quadcore.news
 
-sudo git clone https://github.com/kmu-sv/quadcore-serving.git -b $BRANCH
+sudo unzip /home/ubuntu/upload.zip -d /var/www
 sudo mv quadcore-serving/frontend quadcore.news
 sudo mv quadcore-serving/backend quadcore.news/quadcore
 sudo cp maintenance/.env quadcore.news/quadcore/.env
 sudo rm -rf quadcore-serving
+sudo rm -rf /home/ubuntu/upload.zip
 
 sudo chmod 755 quadcore.news
 
@@ -22,6 +26,5 @@ sudo pip3 install -r quadcore.news/quadcore/requirements.txt
 sudo systemctl daemon-reload
 sudo systemctl start nginx
 sudo systemctl start quadcore
-
 exit
 DEPLOY
