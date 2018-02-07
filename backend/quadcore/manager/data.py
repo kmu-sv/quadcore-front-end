@@ -64,7 +64,7 @@ class DataManager:
     @classmethod
     def is_exist_user(cls, email):
         """
-        Check email key 
+        Check email key.
         """
         return cls.db.keys('email:' + email)
 
