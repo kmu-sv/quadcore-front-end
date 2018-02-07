@@ -10,11 +10,10 @@ var Common = function () {
                 if (data.result == 0) {
                     return data;
                 } else {
-                    alert("Fecthing info failed");
+                    alert("Fetching info failed");
                 }
             });
     };
-
     //Fetch news from server and return json object
     common.fetchFeed = function (offset, callback) {
         $.ajax({
@@ -24,6 +23,11 @@ var Common = function () {
             success: callback
         });
     };
-
+    //Return clicked social button
+    common.returnSocial = function () {
+        $('.social-button').click(function(event){
+            return event.target.id;
+        });
+    };
     return common;
 };
