@@ -14,6 +14,7 @@ class ProfileNew(Resource):
                         "cause": "Not sufficient data, or data has wrong form"
                     }
                 else:
+                    map_info = DataManager.set_user_map(args)
                     return {
                         "result": 0
                     }
