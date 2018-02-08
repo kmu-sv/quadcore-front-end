@@ -20,6 +20,7 @@ from quadcore.restful.user.profile.new import ProfileNew
 from quadcore.restful.user.profile.update import ProfileUpdate
 from quadcore.restful.user.metadata import Metadata
 from quadcore.restful.feed import Feed
+from quadcore.restful.interest import Interest
 
 api.add_resource(GithubLogin, "/login/github")
 api.add_resource(GithubAuth, "/login/github/authorized")
@@ -30,6 +31,7 @@ api.add_resource(ProfileNew, "/user/profile/new")
 api.add_resource(ProfileUpdate, "/user/profile/update")
 api.add_resource(Metadata, "/user/metadata")
 api.add_resource(Feed, "/feed")
+api.add_resource(Interest, "/interest")
 
 app.register_blueprint(bp_api)
 
