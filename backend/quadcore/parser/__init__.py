@@ -13,7 +13,7 @@ class Parser:
         """
         self.token = token
 
-    def get_interests(self):
+    def get_interests(self, urls):
         """
         Function for getting interest entities.
         Returns entity ID list.
@@ -30,6 +30,7 @@ class Parser:
         sources = list()
         for url in urls:
             sources.append(requests.get(url))
+        return sources
 
     def get_entities_by_sources(self, sources):
         """

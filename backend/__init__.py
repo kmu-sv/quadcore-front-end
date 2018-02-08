@@ -22,6 +22,7 @@ from quadcore.restful.user.metadata import Metadata
 from quadcore.restful.feed import Feed
 from quadcore.restful.user.profile.check.auth import CheckAuth
 from quadcore.restful.user.profile.check.username import CheckUsername
+from quadcore.restful.interest import Interest
 
 api.add_resource(GithubLogin, "/login/github")
 api.add_resource(GithubAuth, "/login/github/authorized")
@@ -35,6 +36,7 @@ api.add_resource(Metadata, "/user/metadata")
 api.add_resource(Feed, "/feed")
 api.add_resource(CheckAuth, "/check/auth")
 api.add_resource(CheckUsername, "/check/username")
+api.add_resource(Interest, "/interest")
 
 app.register_blueprint(bp_api)
 
